@@ -1,0 +1,15 @@
+ACCOUNTDISABLE = 2; LOCKOUT = 16; PASSWD_CANT_CHANGE = 64; NORMAL_ACCOUNT = 512; DONT_EXPIRE_PASSWD = 65536
+
+qwinsta -- list rdp sessions
+rwinsta <session id> -- disconnect a session
+
+Get-Service *vault* -computername $Computers | Select name,status,machinename |sort machinename |format-table -autosize
+
+psexec.exe \\555047-log6 net user -- run command remotely
+
+Get-WmiObject -Class win32_useraccount | ft Name -- local user accounts
+
+Get local users list from remote machine
+----------------------------------------
+$adsi = [ADSI]"WinNT://555047-log6"
+$adsi.psbase.children | where {$_.psbase.schemaClassName -match "user"} | select @{n="Name";e={$_.name}}
