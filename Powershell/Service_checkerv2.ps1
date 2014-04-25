@@ -22,7 +22,7 @@ function Sendmail ($Subject, $Body)
 	}
 }
 
-$Servers = Get-Content C:\Users\Administrator\Desktop\servers.txt
+$Servers = Get-Content C:\Users\karthik.r\Desktop\Draker\Scripts\servers.txt
 
 foreach ($Computer in $Servers)
 
@@ -52,7 +52,7 @@ foreach ($Computer in $Servers)
 			{
 
 				#check if a service is hung
-
+				
 				if ($Service.status -eq "StopPending")
 
 				{
@@ -78,7 +78,7 @@ foreach ($Computer in $Servers)
 				elseif ($Service.status -eq "Stopped")
 
 				{
-
+					echo $Service.status
 					#email to notify if a service is down
 
 					$Subject = "$srv is stopped on $Computer"

@@ -13,3 +13,12 @@ Get local users list from remote machine
 ----------------------------------------
 $adsi = [ADSI]"WinNT://555047-log6"
 $adsi.psbase.children | where {$_.psbase.schemaClassName -match "user"} | select @{n="Name";e={$_.name}}
+
+Setting up in Task Scheduler
+-----------------------------
+Program/Script : C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+Add Arguments : -ExecutionPolicy Bypass C:\Scripts\Service_checkerv2.ps1
+
+"$(Get-Date -f o) Start logging"
+
+-ExecutionPolicy Bypass C:\Scripts\RestartLNservice.ps1
